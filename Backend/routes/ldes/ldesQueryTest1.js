@@ -9,7 +9,8 @@ export async function ldesQueryTest1(req, res) {
         GRAPH ?g {
           ?subject sosa:observedProperty ?parameter ;
                    sosa:hasSimpleResult ?value ;
-                   sosa:resultTime ?time .
+                   sosa:resultTime ?time;
+                    .
         }
       }
       LIMIT 20
