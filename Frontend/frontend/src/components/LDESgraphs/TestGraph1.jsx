@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import ReactECharts from 'echarts-for-react';
 
 const TestGraph1 = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]); //Stores the actual list of numbers and times from the API
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => { //Run this specific code only once, right when the component first appears on the screen
     const fetchData = async () => {
       try {
         setLoading(true);
