@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import GraphCard from './components/GraphCard';
 import Footer from './components/Footer';
+import TestGraph1 from './components/LDESgraphs/TestGraph1';
 // --- Components ---
 
 
@@ -13,14 +14,10 @@ import Footer from './components/Footer';
 
 function App() {
   // Simulating your future data list
-  const graphPlaceholders = [
-    { id: 1, title: 'Revenue Trends' },
-    { id: 2, title: 'User Acquisition' },
-    { id: 3, title: 'Server Load' },
-    { id: 4, title: 'Conversion Rates' },
-    { id: 5, title: 'Regional Traffic' },
-    { id: 6, title: 'Customer Satisfaction' },
-  ];
+
+  const graphArray = [{ id: 1, title: "Temperature Sensor", component: TestGraph1 },
+    { id: 2, title: "Humidity Analytics", component: TestGraph1 },
+    { id: 3, title: "Pressure Monitoring", component: TestGraph1 },]
 
   return (
     // min-h-screen ensures footer hits bottom even if content is short
@@ -42,8 +39,12 @@ function App() {
              - lg:grid-cols-3 (Desktop)
           */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {graphPlaceholders.map((graph) => (
-              <GraphCard key={graph.id} title={graph.title} id={graph.id} />
+            {graphArray.map((graph) => (
+              <GraphCard 
+      key={graph.id} 
+      title={graph.title} 
+      GraphComponent={graph.component} // Add this line
+    />
             ))}
           </div>
 

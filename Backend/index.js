@@ -1,7 +1,9 @@
 import express from 'express';
 //import ldesRouter from './routes/ldes.js'; // Import your new route file
 import { ingestData,ingestToGraphDB } from './services/ldesService.js';
-import { queryGraphDB } from './routes/ldes/ldesSPARQL.js';
+//import { queryGraphDB } from './routes/ldes/ldesSPARQLengine.js';
+import { ldesQueryTest1 } from './routes/ldes/ldesQueryTest1.js';
+
 const app = express();
 const PORT = 3000;
 
@@ -26,27 +28,7 @@ async function startServer() {
       console.log(`Server running on http://localhost:${PORT}`);
     });
 
-    const results = await queryGraphDB("http://localhost:7200", "ldes-cache",`
- 
-PREFIX sosa: <http://www.w3.org/ns/sosa/>
-
-SELECT ?subject ?value ?time
-WHERE {
-  GRAPH ?g {
-    ?subject sosa:observedProperty "River Stage" ;
-             sosa:hasSimpleResult ?value ;
-             sosa:resultTime ?time .
-  }
-}
-LIMIT 10
-    `)
-    console.log(JSON.stringify(results, null, 2));
-    results.forEach(observation => {
-  const waterLevel = observation.value;
-  const timestamp = observation.time;
-
-  console.log(`At ${timestamp}, the river stage was ${waterLevel} meters.`);
-});
+    await ldesQueryTest1()
 
   } catch (error) {
     console.error("Failed to start server:", error);

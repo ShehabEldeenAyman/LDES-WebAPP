@@ -111,9 +111,12 @@ const TestGraph1 = () => {
   };
 
   return (
-    <div style={{ width: '100%', height: '400px' }}>
-      <ReactECharts option={options} style={{ height: '100%', width: '100%' }} />
-    </div>
+<div style={{ width: '100%', height: '100%' }}>
+    <ReactECharts 
+      option={options} 
+      style={{ height: '100%', width: '100%' }} 
+    />
+  </div>
   );
 };
 
