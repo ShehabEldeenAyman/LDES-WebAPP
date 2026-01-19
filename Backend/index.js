@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors'
 //import ldesRouter from './routes/ldes.js'; // Import your new route file
 import { ingestData,ingestToGraphDB } from './services/ldesService.js';
 //import { queryGraphDB } from './routes/ldes/ldesSPARQLengine.js';
@@ -8,6 +9,9 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cors());
+
+app.get('/ldes/ldesQueryTest1', ldesQueryTest1);
 
 async function startServer() {
   try {
@@ -28,7 +32,7 @@ async function startServer() {
       console.log(`Server running on http://localhost:${PORT}`);
     });
 
-    await ldesQueryTest1()
+    //await ldesQueryTest1()
 
   } catch (error) {
     console.error("Failed to start server:", error);
