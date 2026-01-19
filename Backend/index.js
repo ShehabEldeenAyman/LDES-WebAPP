@@ -3,7 +3,8 @@ import cors from 'cors'
 //import ldesRouter from './routes/ldes.js'; // Import your new route file
 import { ingestData,ingestToGraphDB } from './services/ldesService.js';
 //import { queryGraphDB } from './routes/ldes/ldesSPARQLengine.js';
-import { ldesQueryTest1 } from './routes/ldes/ldesQueryTest1.js';
+import { RiverStage1Year } from './routes/ldes/RiverStage1Year.js';
+import {RiverDischarge1Year} from './routes/ldes/RiverDischarge1Year.js'
 
 const app = express();
 const PORT = 3000;
@@ -11,7 +12,9 @@ const PORT = 3000;
 app.use(express.json());
 app.use(cors());
 
-app.get('/ldes/ldesQueryTest1', ldesQueryTest1);
+app.get('/ldes/RiverStage1Year', RiverStage1Year);
+app.get('/ldes/RiverDischarge1Year', RiverDischarge1Year);
+
 
 async function startServer() {
   try {
